@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+​
+<html lang='en'>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Citi Bike Visualization & Analysis Dashboard</title>
+​
+        <!--Bootstrap-->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+​
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+​
+        <link rel="stylesheet" href="style.css">
+        <title>Heat map simple | CartoDB.js</title>
+        <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+        <link rel="shortcut icon" href="https://cartodb.com/assets/favicon.ico" />
+        <style>
+          html, body, #map {
+            height: 100%;
+            padding: 0;
+            margin: 0;
+          }
+        </style>
+        <link rel="stylesheet" href="https://libs.cartocdn.com/cartodb.js/v3/themes/css/cartodb.css" />
+        <!--[if lte IE 8]>
+          <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/themes/css/cartodb.ie.css" />
+        <![endif]-->
+        <script type="sql/html" id="cartocss_template">
+          /** torque_cat visualization */
+    
+          Map {
+          -torque-frame-count:64;
+          -torque-animation-duration:30;
+          -torque-time-attribute:"posttime";
+          -torque-aggregation-function:"sum(1)+CDB_Math_Mode(direction)*100";
+          -torque-resolution:2;
+          -torque-data-aggregation:linear;
+          }
+    
+          #cleveland_spring_points{
+            comp-op: source-over;
+            marker-fill-opacity: 1;
+            marker-line-color: #FFF;
+            marker-line-width: 0;
+            marker-line-opacity: 1;
+            marker-type: ellipse;
+            marker-width: 1;
+            marker-fill: #F84F40;
+          }
+          #cleveland_spring_points[value>101] {
+           marker-width:2;
+          }
+          #cleveland_spring_points[value>102] {
+           marker-width:3;
+          }
+          #cleveland_spring_points[value>103] {
+           marker-width:5;
+          }
+          #cleveland_spring_points[value>104] {
+           marker-width:8; 
+          }
+          #cleveland_spring_points[value>105] {
+           marker-width:12; 
+          }
+          #cleveland_spring_points[value>106] {
+           marker-width:15; 
+          }
+    
+          #cleveland_spring_points[value>200] {
+            marker-fill: #5CA2D1;
+           marker-width:1;
+          }
+          #cleveland_spring_points[value>201] {
+           marker-width:2;
+          }
+          #cleveland_spring_points[value>202] {
+           marker-width:3;
+          }
+          #cleveland_spring_points[value>203] {
+           marker-width:5;
+          }
+          #cleveland_spring_points[value>204] {
+           marker-width:8; 
+          }
+          #cleveland_spring_points[value>205] {
+           marker-width:12; 
+          }
+          #cleveland_spring_points[value>206] {
+           marker-width:15; 
+          }
+    
+          #cleveland_spring_points[frame-offset=1] {
+           marker-width:2;
+           marker-fill-opacity:0.45; 
+          }
+          #cleveland_spring_points[frame-offset=2] {
+           marker-width:4;
+           marker-fill-opacity:0.225; 
+          }
+        </script>
+      </head>
+​
+    <body>
+        <!--Navigation-->
+        <div class="navigation">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                          <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <a class="navbar-brand" href="index.html">Citi Bike Visualization and Analysis Project</a>
+                        
+                        <!--Drop Down Menu-->
+                        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                            <ul class="navbar-nav ml-auto">
+                                    
+​
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="dailyusage.html">Daily Usage</a>
+                                    </li>
+​
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="expansion.html">Expansion</a>
+                                    </li>
+​
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="subway.html">Subway</a>
+                                    </li>
+​
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="socialmedia.html">Social Media</a>
+                                    </li>
+​
+                                    <li class="nav-item">
+                                    <a class="nav-link" href="bicyclecollisions.html">Bicycle Collisions</a>
+                                    </li>
+
+                                    <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" data-toggle="dropdown"
+                                    href="#" role="button" aria-haspopup="true" aria-expanded="false" id='navbarNavDropdownMenuLink'>
+                                    Plots
+                                    </a>
+
+                                  <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="visual1.html">Visual 1</a></li>
+                                    <li><a class="dropdown-item" href="visual2.html">Visual 2</a></li>
+                                    <li><a class="dropdown-item" href="visual3.html">Visual 3</a></li>
+                                    <li><a class="dropdown-item" href="visual4.html">Visual 4</a></li> 
+                                  </ul>
+
+                                  <li class="nav-item">
+                                  <a class="nav-link" href="processdocumentation.html">Process Documentation</a>
+                                  </li>
+                                </li>
+
+                              </ul>
+                        </div> <!--Closes Drop Down Menu-->
+                </nav>
+        </div> <!--Closes Navigation Div-->
+        <!---------------------------------------------------------------------------------------------------------------------->
+        <div id="map"></div>
+    
+        <!-- include cartodb.js library -->
+        <script src="https://libs.cartocdn.com/cartodb.js/v3/cartodb.js"></script>
+        <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+    
+        <script>
+          function main() {
+            var map = new L.Map('map', {
+              zoomControl: false,
+              center: [40.72209113, -73.99824792],
+              zoom: 14
+            });
+            
+            var layer = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png',{
+              attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'
+            }).addTo(map);
+    
+            cartodb.createLayer(map, {
+              type: "torque",
+              order: 1,
+              options: {
+                query: "",
+                table_name: "cleveland_spring_points",
+                user_name: "andrew",
+                tile_style: $('#cartocss_template').html()
+                }
+            }, {
+              https: true,
+              tiler_protocol: 'https',
+              tiler_port: 443
+            }).done(function(layer) {
+              map.addLayer(layer);
+            });
+          }
+    
+          // you could use $(window).load(main);
+          window.onload = main;
+        </script>
+    </body>
+</html>
