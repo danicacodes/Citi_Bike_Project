@@ -28,6 +28,7 @@ var map = L.map("map-id", {
   ]
 });
 
+
 // Add our 'lightmap' tile layer to the map
 lightmap.addTo(map);
 
