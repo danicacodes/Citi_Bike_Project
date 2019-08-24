@@ -94,25 +94,6 @@
         
         <div id="map-id"></div>
 
-        <!--Google Bike Routes-->
-
-        <script>
-            function initMap() {
-              var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 14,
-                center: {lat: 42.3726399, lng: -71.1096528}
-              });
-      
-              var bikeLayer = new google.maps.BicyclingLayer();
-              bikeLayer.setMap(map);
-            }
-          </script>
-          <script async defer
-          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCf5KTsWaPa312g5CjSPJwnJKeC2Uo4T7M&callback=initMap">
-          </script>
-
-        <!--End Google Bike Routes-->
-
         <!-- D3 -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.5.0/d3.min.js"></script>
 
