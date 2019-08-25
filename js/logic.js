@@ -6,13 +6,16 @@ var lightmap = L.tileLayer("https://api.mapbox.com/styles/v1/mapbox/light-v9/til
   accessToken: API_KEY
 });
 
+var bikePathURL = "https://maps.googleapis.com/maps/api/js?key=AIzaSyCf5KTsWaPa312g5CjSPJwnJKeC2Uo4T7M&callback=initMap"
+
 // Initialize all of the LayerGroups we'll be using
 var layers = {
   COMING_SOON: new L.LayerGroup(),
   EMPTY: new L.LayerGroup(),
   LOW: new L.LayerGroup(),
   NORMAL: new L.LayerGroup(),
-  OUT_OF_ORDER: new L.LayerGroup()
+  OUT_OF_ORDER: new L.LayerGroup(),
+  bikePathURL: new L.LayerGroup()
 };
 
 // Create the map with our layers
@@ -24,7 +27,8 @@ var map = L.map("map-id", {
     layers.EMPTY,
     layers.LOW,
     layers.NORMAL,
-    layers.OUT_OF_ORDER
+    layers.OUT_OF_ORDER,
+    layers.bikePathURL
   ]
 });
 
@@ -38,8 +42,18 @@ var overlays = {
   "Empty Stations": layers.EMPTY,
   "Low Stations": layers.LOW,
   "Healthy Stations": layers.NORMAL,
-  "Out of Order": layers.OUT_OF_ORDER
+  "Out of Order": layers.OUT_OF_ORDER,
+  "Bike Path": layers.bikePathURL
 };
+
+function initMap() {
+  var googlemap = new google.maps.Map(document.getElementById('map'), {
+    zoom: 14,
+    center: {lat: 40.7590, lng: -73.9845}
+  });
+  var bikeLayer = new google.maps.BicyclingLayer();
+  bikeLayer.setMap(googlemap);
+}
 
 // Create a control for our layers, add our overlay layers to it
 L.control.layers(null, overlays, {
