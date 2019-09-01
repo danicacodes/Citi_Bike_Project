@@ -50,15 +50,11 @@
                                     
 
                                 <li class="nav-item">
+                                    <a class="nav-link" href="usage.html">Overall Usage</a>
+                                </li>
+
+                                <li class="nav-item">
                                     <a class="nav-link" href="riderprofile.html">Rider Profile</a>
-                                </li>
-
-                                <li class="nav-item">
-                                    <a class="nav-link" href="usage.html">Usage</a>
-                                </li>
-
-                                <li class="nav-item">
-                                    <a class="nav-link" href="weather.html">Weather</a>
                                 </li>
 
                                 <li class="nav-item">
@@ -93,42 +89,40 @@
         <h1 class="title">Process Documentation</h1>
         <!-- Added little bicycle using fontawesome-->
         <h4 id="statements">Overview</h4> 
-        <p id="statements"> The Citi Bike data included the following:</p>
-        <li id="statements">
-            Station locations (including name and station ID)
-        </li>
-        <li id="statements">
-            Starting and Ending station of each trip
-        </li>
-        <li id="statements">
-            Rider Gender
-        </li>
-        <li id="statements">
-            Rider Gender
-        </li>
+        <p id="statements"> Since we are working with transaction data, we created a Postgres Database in Heroku. 
+            This allowed us to share the database without needing to recreate a Postgres database on individual computers</p>
+        <p id="statements">
+            Our visualization is Flask-powered and we've used a compbination of Leaflet, Plotly, and <a href="http://dimplejs.org/">DimpleJS</a> (new JavaScript library)
+        </p>
+
 
         <h4 id="statements"> Related Work </h4>
 
-        <p id="statements"> 
-        </p>
+            <li id="statements">
+                    <a href="https://toddwschneider.com/posts/a-tale-of-twenty-two-million-citi-bikes-analyzing-the-nyc-bike-share-system/">
+                        A Tale of Twenty-Two Million Citi Bike Rides: Analyzing the NYC Bike Share System</a> by Todd W. Schneider.
+            </li>
+            <li id="statements">
+                    <a href="https://evanwangxx.github.io/Citi-Bike-Usage-in-NYC/index.html">Citi Bike Usage in NYC</a> by Evan Wang
+            </li>
+            <li id="statements">
+                <a href="https://github.com/karmacelina/citi_bike/blob/master/citibike_2015_EDA_modeling.ipynb">Analysis of 2015 CitiBike data</a>
+                    by Laura Colon-Melendez
+            </li>
 
-            
+            <li id="statements">
+                    <a href="https://github.com/lweislo/Tableau-Citibike">Tableau-Citibike</a>
+                        by L Weislo
+                </li>
+                
 
-        <p id="statements"> Placeholder...  
-        </p>
-
-        <p id="statements">Placeholder...</p>
-
-        <img id="graphs" src="img/tripduration.png" width="700">
-
-        <p id="statements">Placeholder...</p>
+            <li id="statements">
+                    <a href="https://github.com/lorenaparralanda/Citibike-Stations/blob/master/M1.%20Citibike%20trip%20data%20(SQL)%20.ipynb">Citibike-Stations</a>
+                        by Lorena De La Parra Landa
+                </li>
         
-        <img id="graphs" src="img/trip_month_subscribers.png" width="700">
+        <img id="graphs" src="img/skyline.JPG" width="1000">
         
-        <img id="graphs" src="img/trip_month_customers.png" width="700">
-        
-        <p id="statements">Placeholder...
-        </p>
         
         <!-- D3 -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.5.0/d3.min.js"></script>
@@ -156,8 +150,9 @@
         <!--Footer-->
         <footer>
                 <div class="container"></div>
-                <div class="footer"> Citi Bike Analysis - New York, New York <i class="fas fa-biking"></i> 
-                </div>
+                <div class="footer"> Citi Bike Analysis - Jersey City, New Jersey <i class="fas fa-biking"></i> 
+                    <a href="https://github.com/danicacodes/Citi_Bike_Project"><i class="fab fa-github"></i></a>
+                </div>            
                 <a style="color: white; font-size: 10px" href="https://spcs.richmond.edu/noncredit/programs/data-analytics/" data-toggle="popover" title="UR Data Analytics" data-content="University of Richmond Data Analytics Bootcamp">UR Data Analytics Bootcamp</a>
             </footer>
     </body>
