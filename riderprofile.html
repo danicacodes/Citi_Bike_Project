@@ -143,7 +143,34 @@
         <p>
 
         </p>
-                <!-- <img id="graphs" src="img/topfivestations.JPG" width="800"> -->
+        <div id="graphs">    
+        <div id="chartContainer">
+            <!-- <script src="/lib/d3.v4.3.0.js"></script> MAC USERS-->
+            <script src="http://d3js.org/d3.v4.min.js"></script>
+            <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.5.0/d3.min.js"></script> -->
+            <script src="http://dimplejs.org/dist/dimple.v2.3.0.min.js"></script>
+            <script type="text/javascript">
+              var svg = dimple.newSvg("#chartContainer", 590, 400);
+              d3.csv("data/july_weekday.csv", function (data) {
+                // data = dimple.filterData(data, "user_type", ["Subscriber"])
+                var myChart = new dimple.chart(svg, data);
+                myChart.setBounds(60, 30, 505, 305);
+                var x = myChart.addCategoryAxis("x", "date");
+                x.addOrderRule("Date");
+                myChart.addMeasureAxis("y", "Subscriber");
+                var s = myChart.addSeries(null, dimple.plot.area);
+                // s.interpolation = "step";
+                // s.lineWeight = 1;
+                myChart.draw();
+              });
+            </script>
+          </div>
+        </div>
+
+        <strong><p id="statements"> 
+            Just to confirm, July 2019 data is consistent with overall data. That is, subscribers use their bikes mostly during the 
+            weekdays.
+        </p></strong>
 
         <h4 id="statements">Who's our commuter? </h4>
         <p id="statements"> 
